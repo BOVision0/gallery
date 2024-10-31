@@ -30,9 +30,17 @@ h1 {
 
 /* PDF Container */
 .pdf-container {
-  margin: 20px 0;
+  width: 80vw; /* Make the PDF container wider */
+  height: 60vh; /* Reduce the height to avoid scrolling */
+  max-width: 900px; /* Set a maximum width for larger screens */
+  margin: 10px 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease-in-out;
+}
+
+.pdf-container iframe {
+  width: 100%;
+  height: 100%; /* Match the container's height */
 }
 
 .pdf-container:hover {
@@ -62,7 +70,8 @@ h1 {
     font-size: 1.5rem;
   }
 
-  .pdf-container iframe {
-    height: 400px;
+  .pdf-container {
+    width: 90vw; /* Increase the width on smaller screens */
+    height: 50vh; /* Further reduce height on mobile */
   }
 }
