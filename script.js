@@ -11,7 +11,6 @@ const downloadBtn = document.getElementById('downloadBtn');
 const metadata = document.getElementById('imageMetadata');
 const imageName = document.getElementById('imageName').querySelector('span');
 const imageDimensions = document.getElementById('imageDimensions').querySelector('span');
-const imageDate = document.getElementById('imageDate').querySelector('span');
 
 // Loop to dynamically add images to the gallery with immediate loading
 for (let i = 1; i <= maxImages; i++) {
@@ -29,16 +28,18 @@ for (let i = 1; i <= maxImages; i++) {
         img.onclick = () => {
             overlay.style.display = 'flex';
             overlayImage.src = img.src;
-            downloadBtn.href = img.src;  // Set download link to image source
+            
+            // Set download link and filename
+            const filename = img.src.split('/').pop();
+            downloadBtn.href = img.src;
+            downloadBtn.setAttribute('download', filename);
 
             // Get and display metadata
             const imgElement = new Image();
             imgElement.src = img.src;
             imgElement.onload = () => {
-                imageName.textContent = img.src.split('/').pop();
+                imageName.textContent = filename;
                 imageDimensions.textContent = `${imgElement.width} x ${imgElement.height}`;
-                imageDate.textContent = new Date().toLocaleDateString(); // Fake upload date for now
-
                 metadata.style.display = 'block';  // Show metadata
             };
         };
@@ -49,7 +50,7 @@ for (let i = 1; i <= maxImages; i++) {
             console.log(`Image ${i} loaded successfully: ${img.src}`);
         };
 
-        img.onerror = (e) => {
+        img.onerror = () => {
             console.error(`Image ${i} failed to load: ${img.src}`);
             img.remove();  // Remove image if it fails to load
         };
