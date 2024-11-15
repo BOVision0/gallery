@@ -12,52 +12,47 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #333;  /* Dark background by default */
-    color: #fff;  /* Light text color */
-    transition: background-color 0.3s, color 0.3s;
+    background-color: #222; /* Darker background */
+    color: #fff;
 }
 
-/* Container Styling */
+/* Gallery Container */
 .gallery-container {
     max-width: 1200px;
     padding: 20px;
     margin: auto;
-}
-
-/* Title Styling */
-h1 {
     text-align: center;
-    margin-bottom: 20px;
+}
+
+h1 {
     font-size: 2em;
-    color: inherit;
+    margin-bottom: 20px;
+    color: #ffcc00; /* Gold title for accent */
 }
 
-/* Masonry Layout Styling */
+/* Grid Layout for Images */
 .gallery {
-    column-count: 3;
-    column-gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
 }
 
+/* Image Styling with Hover Effect */
 .gallery img {
     width: 100%;
-    margin-bottom: 15px;
+    height: auto;
     border-radius: 10px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    transform: scale(0.9);
-    animation: fadeIn 0.5s forwards ease-in-out;
+    transition: transform 0.3s, opacity 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 }
 
-/* Animation Keyframes */
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+.gallery img:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
 }
 
-/* Overlay Styles */
+/* Overlay Styling */
 .overlay {
     display: none;
     position: fixed;
@@ -65,18 +60,49 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.85);
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    padding: 20px;
 }
 
-/* Overlay Image Styling */
 .overlay-image {
-    max-width: 90%;
+    max-width: 80%;
     max-height: 80%;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Close Button Styling */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 2em;
+    color: #ffcc00;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #fff;
+}
+
+/* Download Button */
+.download-btn {
+    position: absolute;
+    top: 20px;
+    right: 100px;
+    font-size: 1.2em;
+    color: #ffcc00;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.download-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Metadata Styling */
@@ -85,47 +111,9 @@ h1 {
     bottom: 10%;
     left: 50%;
     transform: translateX(-50%);
-    color: white;
-    text-align: center;
     background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
     padding: 10px;
     border-radius: 5px;
-    display: none;
-}
-
-.metadata p {
-    margin: 5px 0;
-}
-
-/* Close Button Styling */
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 50px;
-    font-size: 2em;
-    color: white;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.close-btn:hover {
-    color: #ccc;
-}
-
-/* Download Button Styling */
-.download-btn {
-    position: absolute;
-    top: 20px;
-    right: 100px;
-    font-size: 1.2em;
-    color: white;
-    background: rgba(0, 0, 0, 0.6);
-    padding: 8px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.download-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
+    text-align: center;
 }
