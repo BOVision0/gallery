@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Image Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="gallery-container">
+        <h1>Enhanced Image Gallery</h1>
+        <div id="gallery" class="gallery"></div>
+    </div>
+
+    <!-- Overlay container for full-size image view -->
+    <div id="overlay" class="overlay">
+        <span id="closeBtn" class="close-btn">&times;</span>
+        <a id="downloadBtn" href="#" download class="download-btn">Download</a>
+        <img id="overlayImage" class="overlay-image" src="" alt="Expanded View">
+
+        <!-- Metadata Display -->
+        <div id="imageMetadata" class="metadata">
+            <p id="imageName">Name: <span></span></p>
+            <p id="imageDimensions">Dimensions: <span></span></p>
+            <p id="imageSize">Size: <span></span></p>
+            <p id="imageDate">Uploaded: <span></span></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
